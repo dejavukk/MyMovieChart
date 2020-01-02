@@ -46,7 +46,6 @@
 		0479B7C323BA465D005E3E61 = {
 			isa = PBXGroup;
 			children = (
-				0479B7E823BA47B6005E3E61 /* MovieVO.swift */,
 				0479B7CE23BA465E005E3E61 /* MyMovieChart */,
 				0479B7CD23BA465E005E3E61 /* Products */,
 			);
@@ -67,6 +66,7 @@
 				0479B7D123BA465E005E3E61 /* SceneDelegate.swift */,
 				0479B7D323BA465E005E3E61 /* ViewController.swift */,
 				0479B7E623BA46C0005E3E61 /* ListViewController.swift */,
+				0479B7E823BA47B6005E3E61 /* MovieVO.swift */,
 				0479B7D523BA465E005E3E61 /* Main.storyboard */,
 				0479B7DB23BA465E005E3E61 /* Assets.xcassets */,
 				0479B7DD23BA465E005E3E61 /* LaunchScreen.storyboard */,
