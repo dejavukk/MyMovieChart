@@ -49,20 +49,20 @@ class ListViewContoller: UITableViewController {
         // 주어진 행에 맞는 데이터 소스를 읽어온다.
         let row = self.list[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell") as! MovieCell
         // cell.textLabel?.text = row.title
         
         // 영화정보에 대한 정보 표시가 될 레이블 설정
-        let title = cell.viewWithTag(101) as? UILabel
-        let desc = cell.viewWithTag(102) as? UILabel
-        let opendate = cell.viewWithTag(103) as? UILabel
-        let rating = cell.viewWithTag(104) as? UILabel
+        // let title = cell.viewWithTag(101) as? UILabel
+        // let desc = cell.viewWithTag(102) as? UILabel
+        // let opendate = cell.viewWithTag(103) as? UILabel
+        // let rating = cell.viewWithTag(104) as? UILabel
         
         // 데이터 소스에 저장된 값을 각 레이블 변수에 할당
-        title?.text = row.title
-        desc?.text = row.description
-        opendate?.text = row.opendate
-        rating?.text = "\(row.rating)"
+        cell.title?.text = row.title
+        cell.desc?.text = row.description
+        cell.opendate?.text = row.opendate
+        cell.rating?.text = "\(row.rating!)"
         
         return cell
     }
