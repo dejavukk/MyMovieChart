@@ -52,6 +52,9 @@ class ListViewContoller: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell")!
         cell.textLabel?.text = row.title
         
+        // 서브타이틀에 데이터 연결하기.
+        cell.detailTextLabel?.text = row.description
+        
         return cell
     }
     
