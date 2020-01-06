@@ -17,10 +17,13 @@
 		0479B7DF23BA465E005E3E61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0479B7DD23BA465E005E3E61 /* LaunchScreen.storyboard */; };
 		0479B7E723BA46C0005E3E61 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479B7E623BA46C0005E3E61 /* ListViewController.swift */; };
 		0479B7E923BA47B6005E3E61 /* MovieVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479B7E823BA47B6005E3E61 /* MovieVO.swift */; };
+		0491285F23C3816500991735 /* rain.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0491285C23C3816500991735 /* rain.jpg */; };
+		0491286023C3816500991735 /* secret.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0491285D23C3816500991735 /* secret.jpg */; };
+		0491286123C3816500991735 /* darknight.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0491285E23C3816500991735 /* darknight.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0454302923C22229002B4013 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		0454302923C22229002B4013 /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MovieCell.swift; sourceTree = "<group>"; };
 		0479B7CC23BA465E005E3E61 /* MyMovieChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMovieChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0479B7CF23BA465E005E3E61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0479B7D123BA465E005E3E61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +35,9 @@
 		0479B7E023BA465E005E3E61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0479B7E623BA46C0005E3E61 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		0479B7E823BA47B6005E3E61 /* MovieVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieVO.swift; sourceTree = "<group>"; };
+		0491285C23C3816500991735 /* rain.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = rain.jpg; path = "기본편공식예제/MyMovieChart/Resources/rain.jpg"; sourceTree = SOURCE_ROOT; };
+		0491285D23C3816500991735 /* secret.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = secret.jpg; path = "기본편공식예제/MyMovieChart/Resources/secret.jpg"; sourceTree = SOURCE_ROOT; };
+		0491285E23C3816500991735 /* darknight.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = darknight.jpg; path = "기본편공식예제/MyMovieChart/Resources/darknight.jpg"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +70,7 @@
 		0479B7CE23BA465E005E3E61 /* MyMovieChart */ = {
 			isa = PBXGroup;
 			children = (
+				0491285B23C3815500991735 /* Resource */,
 				0479B7CF23BA465E005E3E61 /* AppDelegate.swift */,
 				0479B7D123BA465E005E3E61 /* SceneDelegate.swift */,
 				0479B7D323BA465E005E3E61 /* ViewController.swift */,
@@ -77,6 +84,16 @@
 				0479B7D823BA465E005E3E61 /* MyMovieChart.xcdatamodeld */,
 			);
 			path = MyMovieChart;
+			sourceTree = "<group>";
+		};
+		0491285B23C3815500991735 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				0491285E23C3816500991735 /* darknight.jpg */,
+				0491285C23C3816500991735 /* rain.jpg */,
+				0491285D23C3816500991735 /* secret.jpg */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +154,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0491286123C3816500991735 /* darknight.jpg in Resources */,
 				0479B7DF23BA465E005E3E61 /* LaunchScreen.storyboard in Resources */,
+				0491285F23C3816500991735 /* rain.jpg in Resources */,
 				0479B7DC23BA465E005E3E61 /* Assets.xcassets in Resources */,
 				0479B7D723BA465E005E3E61 /* Main.storyboard in Resources */,
+				0491286023C3816500991735 /* secret.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
