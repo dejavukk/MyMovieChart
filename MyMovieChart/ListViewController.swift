@@ -47,6 +47,36 @@ class ListViewContoller: UITableViewController {
         let log = NSString(data: apidata, encoding: String.Encoding.utf8.rawValue) ?? ""
         NSLog("API Result = \( log )")
         
+        do {
+            let apiDictionary = try JSONSerialization.jsonObject(with: apidata, options: []) as! NSDictionary
+            
+            // 데이터 구조에 따라 차례대로 캐스팅하며 읽어온다.
+            let hoppin = apiDictionary["hoppin"] as! NSDictionary
+            let movies = hoppin["movies"] as! NSDictionary
+            let movie = movies["movie"] as! NSArray
+            
+            // Iterator 처리를 하면서 API 데이터를 MovieVO 객체에 저장.
+            for row in movie {
+                // 순회 상수를 NSDictionary
+                let r = row as! NSDictionary
+                
+                // 테이블뷰 리스트를 구성할 데이터 형식
+                let mvo = MovieVO()
+                
+                // movie 배열의 각 데이터를 mvo 상수의 속성에 대입
+                mvo.title           = r["title"] as? String
+                mvo.description     = r["genreNames"] as? String
+                mvo.thumbnail       = r["thumbnailImage"] as? String
+                mvo.detail          = r["linkUrl"] as? String
+                mvo.rating          = ((r["ratingAverage"] as! NSString).doubleValue)
+                
+                self.list.append(mvo)
+                
+            }
+        } catch {
+            
+        }
+        
 
         
     }
