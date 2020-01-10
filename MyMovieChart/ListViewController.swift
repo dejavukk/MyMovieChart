@@ -19,8 +19,8 @@ class ListViewContoller: UITableViewController {
     
     // 테이블 뷰를 구성할 리스트 데이터
     lazy var list: [MovieVO] = {
+        
         var datalist = [MovieVO]()
-
         for (title, desc, opendate, rating, thumbnail) in self.dataset {
             let mvo = MovieVO()
             mvo.title = title
@@ -35,6 +35,19 @@ class ListViewContoller: UITableViewController {
     }()
     
     override func viewDidLoad() {
+        
+        let url = "http://swiftapi.rubypaper.co.kr:2029/hoppin/movies?version=1&page=1&count=10&genreId=&order=releasedateasc"
+        
+        let apiURI: URL! = URL(string: url)
+        
+        // REST API를 호출
+        let apidata = try! Data(contentsOf: apiURI)
+        
+        // 데이터 전송 결과를 로그로 출력
+        let log = NSString(data: apidata, encoding: String.Encoding.utf8.rawValue) ?? ""
+        NSLog("API Result = \( log )")
+        
+
         
     }
     
