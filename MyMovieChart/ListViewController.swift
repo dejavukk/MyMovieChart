@@ -85,21 +85,23 @@ class ListViewContoller: UITableViewController {
         let row = self.list[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell") as! MovieCell
-        // cell.textLabel?.text = row.title
-        
-        // 영화정보에 대한 정보 표시가 될 레이블 설정
-        // let title = cell.viewWithTag(101) as? UILabel
-        // let desc = cell.viewWithTag(102) as? UILabel
-        // let opendate = cell.viewWithTag(103) as? UILabel
-        // let rating = cell.viewWithTag(104) as? UILabel
         
         // 데이터 소스에 저장된 값을 각 레이블 변수에 할당
         cell.title?.text = row.title
         cell.desc?.text = row.description
         cell.opendate?.text = row.opendate
         cell.rating?.text = "\(row.rating!)"
-        cell.thumbnail.image = UIImage(named: row.thumbnail!)
         
+        // 섬네일 경로를 인자값으로 하는 URL 객체 생성
+        let url: URL! = URL(string: row.thumbnail!)
+        
+        // 이미지를 읽어와 Data 객체에 저장
+        let imageData = try! Data(contentsOf: url)
+        
+        // UIImage 객체를 생성하여 아울렛 변수의 image 속성 대입.
+        cell.thumbnail.image = UIImage(data: imageData)
+        
+        // 셀 객체 반환
         return cell
     }
     
