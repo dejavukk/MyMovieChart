@@ -10,32 +10,19 @@ import UIKit
 
 class ListViewContoller: UITableViewController {
     
-    // 튜플 아이템을 가진 배열로 정의된 데이터 세트
-    var dataset = [
-        ("다크나이트", "영웅물에 철학에 음악까지 더해져 예술이 되다.", "2008-09-04", 8.95, "darknight.jpg"),
-        ("호우시절", "때를 알고 내리는 좋은 비.", "2009-10-08", 7.31, "rain.jpg"),
-        ("말할 수 없는 비밀", "대만 청춘 로맨스, 너까지 다섯 걸음.", "2015-05-07", 9.19, "secret.jpg")
-    ]
     
     // 테이블 뷰를 구성할 리스트 데이터
     lazy var list: [MovieVO] = {
         
         var datalist = [MovieVO]()
-        for (title, desc, opendate, rating, thumbnail) in self.dataset {
-            let mvo = MovieVO()
-            mvo.title = title
-            mvo.description = desc
-            mvo.opendate = opendate
-            mvo.rating = rating
-            mvo.thumbnail = thumbnail
-            
-            datalist.append(mvo)
-        }
+        
         return datalist
     }()
+
     
     override func viewDidLoad() {
         
+        // API 호출을 위한 URL생성
         let url = "http://swiftapi.rubypaper.co.kr:2029/hoppin/movies?version=1&page=1&count=10&genreId=&order=releasedateasc"
         
         let apiURI: URL! = URL(string: url)
@@ -46,6 +33,10 @@ class ListViewContoller: UITableViewController {
         // 데이터 전송 결과를 로그로 출력
         let log = NSString(data: apidata, encoding: String.Encoding.utf8.rawValue) ?? ""
         NSLog("API Result = \( log )")
+        
+        /*
+         A ?? B -> 만약 A가 nil이 아닐 경우 옵셔널을 해제하고, nil일 경우 대신 B값을 사용하라.
+         */
         
         do {
             let apiDictionary = try JSONSerialization.jsonObject(with: apidata, options: []) as! NSDictionary
@@ -116,7 +107,6 @@ class ListViewContoller: UITableViewController {
         
         print("선택된 행은 \(indexPath.row) 번째 행입니다.")
     }
-    
     
     
 }
