@@ -32,10 +32,8 @@ class ListViewContoller: UITableViewController {
     func callMovieAPI() {
         
         // API를 호출하기 위한 URL생성
-        let url = "http://swiftapi.rubypaper.co.kr:2029/hoppin/movies?version=1&page\(self.page)&count=10&genreId=&order=releasedateasc"
-        
+        let url = "http://swiftapi.rubypaper.co.kr:2029/hoppin/movies?version=1&page=\(self.page)&count=30&genreId=&order=releasedateasc"
         let apiURL: URL! = URL(string: url)
-        
         let apidata = try! Data(contentsOf: apiURL)
         
         /*
@@ -53,7 +51,6 @@ class ListViewContoller: UITableViewController {
             let movie = movies["movie"] as! NSArray
             
             // Iterator 처리를 하면서 API 데이터를 MovieVO객체에 저장한다.
-            // Iterator 처리를 하면서 API 데이터를 MovieVO 객체에 저장.
             for row in movie {
                 // 순회 상수를 NSDictionary
                 let r = row as! NSDictionary
