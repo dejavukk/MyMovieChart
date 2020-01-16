@@ -10,6 +10,8 @@ import UIKit
 
 class ListViewContoller: UITableViewController {
     
+    // 현재까지 읽어온 API데이터의 페이지 정보를 저장.
+    var page = 1
     
     // 테이블 뷰를 구성할 리스트 데이터
     lazy var list: [MovieVO] = {
@@ -18,34 +20,39 @@ class ListViewContoller: UITableViewController {
         
         return datalist
     }()
-
     
-    override func viewDidLoad() {
+    @IBAction func moreButton(_ sender: UIButton) {
         
-        // API 호출을 위한 URL생성
-        let url = "http://swiftapi.rubypaper.co.kr:2029/hoppin/movies?version=1&page=1&count=10&genreId=&order=releasedateasc"
+        self.page += 1
+        self.callMovieAPI()
+        self.tableView.reloadData()
         
-        let apiURI: URL! = URL(string: url)
+    }
+    
+    func callMovieAPI() {
         
-        // REST API를 호출
-        let apidata = try! Data(contentsOf: apiURI)
+        // API를 호출하기 위한 URL생성
+        let url = "http://swiftapi.rubypaper.co.kr:2029/hoppin/movies?version=1&page\(self.page)&count=10&genreId=&order=releasedateasc"
         
-        // 데이터 전송 결과를 로그로 출력
-        let log = NSString(data: apidata, encoding: String.Encoding.utf8.rawValue) ?? ""
-        NSLog("API Result = \( log )")
+        let apiURL: URL! = URL(string: url)
+        
+        let apidata = try! Data(contentsOf: apiURL)
         
         /*
-         A ?? B -> 만약 A가 nil이 아닐 경우 옵셔널을 해제하고, nil일 경우 대신 B값을 사용하라.
-         */
+        A ?? B -> 만약 A가 nil이 아닐 경우 옵셔널을 해제하고, nil일 경우 대신 B값을 사용하라.
+        */
+        let log = NSString(data: apidata, encoding: String.Encoding.utf8.rawValue) ?? "데이터가 없습니다."
+        NSLog("API Result = \( log )")
         
         do {
             let apiDictionary = try JSONSerialization.jsonObject(with: apidata, options: []) as! NSDictionary
             
-            // 데이터 구조에 따라 차례대로 캐스팅하며 읽어온다.
+            // 데이터 구조에 따라 차례대로 캐스팅하여 읽어온다.
             let hoppin = apiDictionary["hoppin"] as! NSDictionary
             let movies = hoppin["movies"] as! NSDictionary
             let movie = movies["movie"] as! NSArray
             
+            // Iterator 처리를 하면서 API 데이터를 MovieVO객체에 저장한다.
             // Iterator 처리를 하면서 API 데이터를 MovieVO 객체에 저장.
             for row in movie {
                 // 순회 상수를 NSDictionary
@@ -65,10 +72,14 @@ class ListViewContoller: UITableViewController {
                 
             }
         } catch {
-            
+            NSLog("파싱이 되지 않았다.")
         }
+    }
+    
+    
+    override func viewDidLoad() {
         
-
+        self.callMovieAPI()
         
     }
     
