@@ -6,7 +6,7 @@
 //  Copyright © 2019 junhyuk. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class MovieVO {
     
@@ -19,6 +19,8 @@ class MovieVO {
     var opendate: String?
     var rating: Double?
     
+    // 영화 썸네일 이미지를 담을 UIImage 객체를 추가한다.
+    var thumbnailImage: UIImage?
     
     /*
      VO : ValueObject패턴 -> 데이터 저장을 전담하는 클래스를 별도로 분리하는 설계방식

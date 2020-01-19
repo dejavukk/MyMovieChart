@@ -30,6 +30,12 @@ class ListViewContoller: UITableViewController {
         
     }
     
+    override func viewDidLoad() {
+        
+        self.callMovieAPI()
+        
+    }
+    
     // 중복된 코드 하나의 메소드로 구현
     func callMovieAPI() {
         
@@ -67,9 +73,16 @@ class ListViewContoller: UITableViewController {
                 mvo.detail          = r["linkUrl"] as? String
                 mvo.rating          = ((r["ratingAverage"] as! NSString).doubleValue)
                 
+                // 웹상에 있는 이미지를 읽어와 UIImage 객체로 생성
+                let url: URL! = URL(string: mvo.thumbnail!)
+                let imageData = try! Data(contentsOf: url)
+                mvo.thumbnailImage = UIImage(data:imageData)
+                
                 self.list.append(mvo)
                 
+                // 전체 카운터 프로퍼티
                 let totalCount = (hoppin["totalCount"] as? NSString)!.integerValue
+                // totlaCount가 읽어온 데이터 크기와 같거나 클 경우 더보기 버튼을 막는다.
                 if (self.list.count >= totalCount) {
                     self.moreButtonOutlet.isHidden = true
                 }
@@ -80,12 +93,32 @@ class ListViewContoller: UITableViewController {
         }
     }
     
-    
-    override func viewDidLoad() {
+    // 썸네일 이미지 처리 메소드 구현
+    func getThumnailImage(_ index: Int) -> UIImage {
         
-        self.callMovieAPI()
+        // 파라미터값으로 받은 인덱스 기반으로 배열 데이터를 읽어온다.
+        let mvo = self.list[index]
         
+        // 메모제이션
+        if let savedImage = mvo.thumbnailImage {
+            return savedImage
+        } else {
+            
+            let url: URL! = URL(string: mvo.thumbnail!)
+            let imageData = try! Data(contentsOf: url)
+            mvo.thumbnailImage = UIImage(data: imageData)   // UIImage를 MovieVO 객체에 저장
+            
+            return mvo.thumbnailImage!  // 저장된 이미지 반환
+        }
     }
+    
+    /*
+     비동기 기법 : 이미지를 내려받을 때를 위한 처리
+     메모제이션 : 테이블 뷰에서 제거된 셀이 재사용 큐에 의해 다시 구성될 때를 위한 처리
+     */
+    
+    
+    
     
     // 테이블 뷰 행의 갯수를 반환하는 메소드.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -99,6 +132,8 @@ class ListViewContoller: UITableViewController {
         // 주어진 행에 맞는 데이터 소스를 읽어온다.
         let row = self.list[indexPath.row]
         
+        NSLog("제목 : \(row.title!), 호출된 행번호 : \(indexPath.row)")
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell") as! MovieCell
         
         // 데이터 소스에 저장된 값을 각 레이블 변수에 할당
@@ -108,13 +143,20 @@ class ListViewContoller: UITableViewController {
         cell.rating?.text = "\(row.rating!)"
         
         // 섬네일 경로를 인자값으로 하는 URL 객체 생성
-        let url: URL! = URL(string: row.thumbnail!)
+        // let url: URL! = URL(string: row.thumbnail!)
         
         // 이미지를 읽어와 Data 객체에 저장
-        let imageData = try! Data(contentsOf: url)
+        // let imageData = try! Data(contentsOf: url)
         
         // UIImage 객체를 생성하여 아울렛 변수의 image 속성 대입.
-        cell.thumbnail.image = UIImage(data: imageData)
+        // cell.thumbnail.image = UIImage(data: imageData)
+        
+        // 비동기 방식으로 섬네일 이미지 읽어온다.
+        DispatchQueue.main.async(execute: {
+            cell.thumbnail.image = self.getThumnailImage(indexPath.row)
+        })
+        
+        NSLog("메소드 실행을 종료하고 셀을 리턴.")
         
         // 셀 객체 반환
         return cell
