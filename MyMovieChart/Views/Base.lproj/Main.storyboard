@@ -3,6 +3,7 @@
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -77,6 +78,7 @@
                                     <outlet property="rating" destination="DnA-R5-IcR" id="BPB-PN-Bzt"/>
                                     <outlet property="thumbnail" destination="6v4-Hr-MmI" id="IV1-ch-b9P"/>
                                     <outlet property="title" destination="pVv-cT-7ht" id="Oy0-Ad-rr1"/>
+                                    <segue destination="YT7-GI-0gV" kind="show" identifier="segue_detail" id="IUL-J0-AlT"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -93,6 +95,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8J3-98-sJF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1098.4000000000001" y="102.70935960591133"/>
+        </scene>
+        <!--영화정보-->
+        <scene sceneID="spN-W9-xvS">
+            <objects>
+                <viewController id="YT7-GI-0gV" customClass="DetailViewController" customModule="MyMovieChart" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u60-SE-6Wn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cy6-52-xbU">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Cy6-52-xbU" firstAttribute="leading" secondItem="CX4-j0-LMN" secondAttribute="leading" id="3VP-jQ-fsT"/>
+                            <constraint firstItem="CX4-j0-LMN" firstAttribute="bottom" secondItem="Cy6-52-xbU" secondAttribute="bottom" id="SwH-T1-6XP"/>
+                            <constraint firstItem="Cy6-52-xbU" firstAttribute="top" secondItem="CX4-j0-LMN" secondAttribute="top" id="inM-JH-HmQ"/>
+                            <constraint firstItem="CX4-j0-LMN" firstAttribute="trailing" secondItem="Cy6-52-xbU" secondAttribute="trailing" id="qEL-XW-pPv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CX4-j0-LMN"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="영화정보" id="GXh-Ap-EUo"/>
+                    <connections>
+                        <outlet property="webView" destination="Cy6-52-xbU" id="U99-nH-OOZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QnH-Rh-cBg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2006" y="103"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XWo-3l-fXg">
