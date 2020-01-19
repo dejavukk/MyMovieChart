@@ -86,6 +86,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="영화정보" id="ZM0-au-JrN"/>
+                    <connections>
+                        <outlet property="moreButtonOutlet" destination="Dac-N5-SbG" id="9oj-lz-sNZ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8J3-98-sJF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

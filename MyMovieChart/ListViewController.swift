@@ -21,6 +21,7 @@ class ListViewContoller: UITableViewController {
         return datalist
     }()
     
+    @IBOutlet var moreButtonOutlet: UIButton!
     @IBAction func moreButton(_ sender: UIButton) {
         
         self.page += 1
@@ -29,6 +30,7 @@ class ListViewContoller: UITableViewController {
         
     }
     
+    // 중복된 코드 하나의 메소드로 구현
     func callMovieAPI() {
         
         // API를 호출하기 위한 URL생성
@@ -66,6 +68,11 @@ class ListViewContoller: UITableViewController {
                 mvo.rating          = ((r["ratingAverage"] as! NSString).doubleValue)
                 
                 self.list.append(mvo)
+                
+                let totalCount = (hoppin["totalCount"] as? NSString)!.integerValue
+                if (self.list.count >= totalCount) {
+                    self.moreButtonOutlet.isHidden = true
+                }
                 
             }
         } catch {
