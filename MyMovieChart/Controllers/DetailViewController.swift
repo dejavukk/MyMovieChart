@@ -25,8 +25,14 @@ class DetailViewController: UIViewController {
         // 내비게이션바 타이틀에 영화제목을 출력
         let navbar = self.navigationItem
         navbar.title = self.mvo.title
-
-        // Do any additional setup after loading the view.
+        
+        // URLRequest 인스턴스 생성
+        let url = URL(string: (self.mvo.detail)!)
+        let req = URLRequest(url: url!)
+        
+        // loadRequest 메소드 호출, req를 파라미터값으로 전달.
+        self.webView.load(req)
+        
     }
     
 
