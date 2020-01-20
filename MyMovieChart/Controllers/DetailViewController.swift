@@ -19,6 +19,12 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSLog("linkurl = \(self.mvo.detail!), title = \(self.mvo.title!)")
+        
+        // 내비게이션바 타이틀에 영화제목을 출력
+        let navbar = self.navigationItem
+        navbar.title = self.mvo.title
 
         // Do any additional setup after loading the view.
     }

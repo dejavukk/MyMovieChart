@@ -173,13 +173,23 @@ class ListViewContoller: UITableViewController {
 // MARK: - extension을 활용하여 코드 분리(가독성을 위한), 화면 전환시 값을 넘겨주기 위한 세그웨이 구현
 extension ListViewContoller {
     
+    // 개발문서 참고. prepare(for:sender:)
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        // 세그웨이의 식별자가 "segue_detail"이라면
         if segue.identifier == "segue_detail" {
-            let path = self.tableView.indexPath(for: sender as! MovieCell)
+            // sender 파라미터를 캐스팅하여 셀 객체로 변환.
+            let cell = sender as! MovieCell
+            let path = self.tableView.indexPath(for: cell)
             
+            // API 영화 데이터 배열중에서 선택된 행에 대한 데이터를 추출한다.
+            let movieInfo = self.list[path!.row]
+            
+            // 행 정보를 통해 선택된 영화를 찾은 다음, 목적지 뷰컨트롤러의 mvo 변수에 대입.
             let detailVC = segue.destination as? DetailViewController
-            detailVC?.mvo = self.list[path!.row]
+            detailVC?.mvo = movieInfo
+            
+            
+            
         }
     }
 }
