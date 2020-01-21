@@ -26,24 +26,47 @@ class DetailViewController: UIViewController {
         let navbar = self.navigationItem
         navbar.title = self.mvo.title
         
+        // 예외처리관련 코드. URL이 잘못되었거나, 값이 누락되었거나.
+        if let url = self.mvo.detail {
+            if let urlObj = URL(string: url) {
+                let req = URLRequest(url: urlObj)
+                self.webView.load(req)
+                
+            } else {
+                
+                let alert = UIAlertController(title: "오류", message: "잘못된 URL입니다.", preferredStyle: .alert)
+                
+                let cancelAction = UIAlertAction(title: "확인", style: .cancel) { (_) in
+                    _ = self.navigationController?.popViewController(animated: true)
+                }
+                
+                alert.addAction(cancelAction)
+                self.present(alert, animated: false, completion: nil)
+            }
+            
+        } else {
+            
+            let alert = UIAlertController(title: "오류", message: "필수 파라미터가 누락되었습니다.", preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title: "확인", style: .cancel) { (_) in
+                
+                _ = self.navigationController?.popViewController(animated: true)
+            }
+            
+            alert.addAction(cancelAction)
+            self.present(alert, animated: false, completion: nil)
+        }
+        
         // URLRequest 인스턴스 생성
         let url = URL(string: (self.mvo.detail)!)
         let req = URLRequest(url: url!)
         
         // loadRequest 메소드 호출, req를 파라미터값으로 전달.
+        
+        
         self.webView.load(req)
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
