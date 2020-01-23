@@ -13,12 +13,17 @@ class DetailViewController: UIViewController {
     
     // wv -> webView 
     @IBOutlet var webView: WKWebView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
     // 목록 화면에서 전달하는 영화를 받을 변수 선언
     var mvo: MovieVO!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // WKNavigationDelegate의 델리게이트 객체를 지정
+        self.webView.navigationDelegate = self
         
         NSLog("linkurl = \(self.mvo.detail!), title = \(self.mvo.title!)")
         
@@ -67,6 +72,24 @@ class DetailViewController: UIViewController {
         self.webView.load(req)
         
     }
-    
+}
 
+// MARK : - WKNavigationDelegate 프로토콜 구현
+extension DetailViewController: WKNavigationDelegate {
+    
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        
+        // 인디케이터뷰의 애니메이션 실행
+        self.spinner.startAnimating()
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        
+        // 인디케이트뷰의 애니메이션 중단
+        self.spinner.stopAnimating()
+    }
+    
+    
+    
+    
 }

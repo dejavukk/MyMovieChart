@@ -112,11 +112,18 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Uwk-5z-whT">
+                                <rect key="frame" x="177" y="396" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Cy6-52-xbU" firstAttribute="leading" secondItem="CX4-j0-LMN" secondAttribute="leading" id="3VP-jQ-fsT"/>
+                            <constraint firstItem="CX4-j0-LMN" firstAttribute="trailing" secondItem="Uwk-5z-whT" secondAttribute="trailing" constant="178" id="9ua-ka-gvC"/>
+                            <constraint firstItem="Uwk-5z-whT" firstAttribute="top" secondItem="CX4-j0-LMN" secondAttribute="top" constant="308" id="MPA-cN-lXD"/>
+                            <constraint firstItem="Uwk-5z-whT" firstAttribute="leading" secondItem="CX4-j0-LMN" secondAttribute="leading" constant="177" id="Qgc-QO-97q"/>
                             <constraint firstItem="CX4-j0-LMN" firstAttribute="bottom" secondItem="Cy6-52-xbU" secondAttribute="bottom" id="SwH-T1-6XP"/>
+                            <constraint firstItem="CX4-j0-LMN" firstAttribute="bottom" secondItem="Uwk-5z-whT" secondAttribute="bottom" constant="362" id="gTB-jl-X8E"/>
                             <constraint firstItem="Cy6-52-xbU" firstAttribute="top" secondItem="CX4-j0-LMN" secondAttribute="top" id="inM-JH-HmQ"/>
                             <constraint firstItem="CX4-j0-LMN" firstAttribute="trailing" secondItem="Cy6-52-xbU" secondAttribute="trailing" id="qEL-XW-pPv"/>
                         </constraints>
@@ -124,6 +131,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="영화정보" id="GXh-Ap-EUo"/>
                     <connections>
+                        <outlet property="spinner" destination="Uwk-5z-whT" id="VO8-kq-Jik"/>
                         <outlet property="webView" destination="Cy6-52-xbU" id="U99-nH-OOZ"/>
                     </connections>
                 </viewController>
