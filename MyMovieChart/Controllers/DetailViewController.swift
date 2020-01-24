@@ -101,6 +101,14 @@ extension DetailViewController: WKNavigationDelegate {
         self.spinner.stopAnimating()
         
         // 경고창 형식으로 오류 메시지 표시
+        self.alert("상세 페이지를 읽어오지 못했습니다.") {
+            
+            // 버튼 탭할 시, 이전화면으로 보낸다.
+            _ = self.navigationController?.popViewController(animated: true)
+        }
+        
+        
+        /*
         let alert = UIAlertController(title: "오류", message: "상세페이지를 읽어오지 못했습니다.", preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: "확인", style: .cancel) { (_) in
@@ -111,10 +119,22 @@ extension DetailViewController: WKNavigationDelegate {
         
         alert.addAction(cancelAction)
         self.present(alert, animated: false, completion: nil)
-        
-        
-        
+        */
     }
+}
+
+// MARK:- 심플한 경고창 함수 정의용 extenstion
+extension UIViewController {
     
-    
+    func alert(_ message: String, onClick: (() -> Void)? = nil) {
+        
+        let controller = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        
+        controller.addAction(UIAlertAction(title: "OK", style: .cancel) { (_) in
+            onClick?()
+        })
+        DispatchQueue.main.sync {
+            self.present(controller, animated: false)
+        }
+    }
 }
