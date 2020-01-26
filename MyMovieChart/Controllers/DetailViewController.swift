@@ -93,6 +93,12 @@ extension DetailViewController: WKNavigationDelegate {
         
         // 인디케이터 뷰의 애니메이션 중지
         self.spinner.stopAnimating()
+        
+        self.alert("상세 페이지를 읽어오지 못했습니다.") {
+            // 버튼 탭할 시, 이전 화면으로 되돌려 보낸다.
+            _ = self.navigationController?.popViewController(animated: true)
+            
+        }
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {

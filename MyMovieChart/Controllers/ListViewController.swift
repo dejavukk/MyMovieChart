@@ -188,8 +188,6 @@ extension ListViewContoller {
             let detailVC = segue.destination as? DetailViewController
             detailVC?.mvo = movieInfo
             
-            
-            
         }
     }
 }
