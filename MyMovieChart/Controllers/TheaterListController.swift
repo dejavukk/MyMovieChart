@@ -38,87 +38,33 @@ class TheaterListController: UITableViewController {
             
             // 4. 문자열로 받은 데이터를 UTF-8로 인코딩한 처리한 Data로 변환한다.
             let encdata = stringData.data(using: String.Encoding.utf8.rawValue)
-        }
-        
-        do {
             
-            
+            do {
+                // 5. Data 객체를 파싱하여 NSArray 객체로 변환한다.
+                let apiArray = try JSONSerialization.jsonObject(with: encdata!, options: []) as? NSArray
+                
+                // 6. 읽어온 데이터를 순회하면서 self.list 배열에 추가한다.
+                for obj in apiArray! {
+                    
+                    self.list.append(obj as! NSDictionary)
+            }
             
         } catch {
+            // 경고창 형식으로 오류메시지 표시.
+            let alert = UIAlertController(title: "실패", message: "데이터 분석에 실패하였습니다.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .cancel))
+            self.present(alert, animated: false)
             
-            
-        }
+            }
+            // 7. 읽어와야 할 다음 페이지의 데이터
+            self.startPoint += sList
         
-        
-        
-    }
-
+        } catch {
+            // 경고창 형식으로 오류 메시지를 표시해준다.
+            let alert = UIAlertController(title: "실패", message: "데이터를 불러오는데 실패하였습니다.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .cancel))
+            self.present(alert, animated: false)
     
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        }
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
