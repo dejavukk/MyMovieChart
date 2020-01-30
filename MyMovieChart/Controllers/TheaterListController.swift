@@ -19,6 +19,8 @@ class TheaterListController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // API 호출한다
+        self.callTheaterAPI()
     }
 
     func callTheaterAPI() {
@@ -67,4 +69,25 @@ class TheaterListController: UITableViewController {
     
         }
     }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return self.list.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        // self.list 배열에서 행에 맞는 데이터 추출
+        let obj = self.list[indexPath.row]
+        
+        // 재사용큐로부터 tCell 식별자에 맞는 셀 객체 전달받음
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tCell") as! TheaterCell
+        cell.mPlexName?.text = obj["상영관 이름"] as? String
+        cell.mPlexTel?.text = obj["연락처"] as? String
+        cell.mPlexAdd?.text = obj["소재지도로명주소"] as? String
+        
+        return cell
+    }
+    
+    
 }
