@@ -96,7 +96,7 @@
             </objects>
             <point key="canvasLocation" x="2040.8" y="102.70935960591133"/>
         </scene>
-        <!--Root View Controller-->
+        <!--영화관 정보-->
         <scene sceneID="ShT-Nd-dWP">
             <objects>
                 <tableViewController id="4ck-vE-G4r" customClass="TheaterListController" customModule="MyMovieChart" customModuleProvider="target" sceneMemberID="viewController">
@@ -112,24 +112,24 @@
                                     <rect key="frame" x="0.0" y="0.0" width="348" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="연락처" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2X-vq-qm7">
+                                            <rect key="frame" x="229" y="11" width="111" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="상영관명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELx-GZ-Afs">
-                                            <rect key="frame" x="16" y="24" width="115" height="18"/>
+                                            <rect key="frame" x="16" y="11" width="170" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EoW-hu-pSr">
-                                            <rect key="frame" x="16" y="50" width="115" height="16"/>
+                                            <rect key="frame" x="16" y="32" width="178" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="연락처" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2X-vq-qm7">
-                                            <rect key="frame" x="244" y="37" width="96" height="17"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -139,6 +139,7 @@
                                     <outlet property="mPlexAdd" destination="EoW-hu-pSr" id="kdl-Ah-gJo"/>
                                     <outlet property="mPlexName" destination="ELx-GZ-Afs" id="bu7-Xp-3az"/>
                                     <outlet property="mPlexTel" destination="s2X-vq-qm7" id="xXq-eq-IxI"/>
+                                    <segue destination="rMP-kg-dOz" kind="show" id="D3G-SF-a1c"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -147,11 +148,41 @@
                             <outlet property="delegate" destination="4ck-vE-G4r" id="zSd-G8-R4R"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="LRh-YN-H8k"/>
+                    <navigationItem key="navigationItem" title="영화관 정보" id="LRh-YN-H8k"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gVl-lo-jId" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2040.8" y="857.88177339901483"/>
+        </scene>
+        <!--Theater View Controller-->
+        <scene sceneID="0A8-Uy-7mV">
+            <objects>
+                <viewController id="rMP-kg-dOz" customClass="TheaterViewController" customModule="MyMovieChart" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Mc-oe-gQc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8cI-br-W3B">
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="8cI-br-W3B" firstAttribute="top" secondItem="f1Q-7e-tER" secondAttribute="top" id="8rL-RD-zaC"/>
+                            <constraint firstItem="f1Q-7e-tER" firstAttribute="bottom" secondItem="8cI-br-W3B" secondAttribute="bottom" id="Od3-PZ-efY"/>
+                            <constraint firstItem="8cI-br-W3B" firstAttribute="leading" secondItem="f1Q-7e-tER" secondAttribute="leading" id="i0r-Ls-Sk2"/>
+                            <constraint firstItem="f1Q-7e-tER" firstAttribute="trailing" secondItem="8cI-br-W3B" secondAttribute="trailing" id="k1o-rn-MrN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="f1Q-7e-tER"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="zXd-jh-OP9"/>
+                    <connections>
+                        <outlet property="map" destination="8cI-br-W3B" id="l5e-cM-rxI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Jw-CM-2Eo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2948" y="858"/>
         </scene>
         <!--영화관-->
         <scene sceneID="hQp-XU-aQD">

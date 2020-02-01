@@ -32,6 +32,7 @@ class TheaterListController: UITableViewController {
         
         // 2. 파라미터값들을 모아 URL객체로 정의.
         let urlObj = URL(string: "\(requestURL)?s_page=\(self.startPoint)&s_list=\(sList)&type=\(type)")
+
         
         do {
             
