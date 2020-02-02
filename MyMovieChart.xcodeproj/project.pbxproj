@@ -23,26 +23,11 @@
 		0479B7E923BA47B6005E3E61 /* MovieVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479B7E823BA47B6005E3E61 /* MovieVO.swift */; };
 		048D8B6A23D49DC200EC5A6B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D8B6923D49DC200EC5A6B /* DetailViewController.swift */; };
 		04C677CF23E5C5E200F4B52D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C677CA23E5C55E00F4B52D /* MapKit.framework */; };
-		04C677D023E5C5E200F4B52D /* MapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04C677CA23E5C55E00F4B52D /* MapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04C677D323E5C64300F4B52D /* TheaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C677D223E5C64300F4B52D /* TheaterViewController.swift */; };
 		04E8224B23C8D04900C58A39 /* secret.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04E8224823C8D04900C58A39 /* secret.jpg */; };
 		04E8224C23C8D04900C58A39 /* rain.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04E8224923C8D04900C58A39 /* rain.jpg */; };
 		04E8224D23C8D04900C58A39 /* darknight.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04E8224A23C8D04900C58A39 /* darknight.jpg */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		04C677D123E5C5E200F4B52D /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				04C677D023E5C5E200F4B52D /* MapKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		041B1E2223DDEF6A00E68506 /* TheaterListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheaterListController.swift; sourceTree = "<group>"; };
@@ -175,7 +160,6 @@
 				0479B7C823BA465E005E3E61 /* Sources */,
 				0479B7C923BA465E005E3E61 /* Frameworks */,
 				0479B7CA23BA465E005E3E61 /* Resources */,
-				04C677D123E5C5E200F4B52D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -399,6 +383,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5V8898Z33P;
 				INFOPLIST_FILE = MyMovieChart/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -417,6 +402,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5V8898Z33P;
 				INFOPLIST_FILE = MyMovieChart/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

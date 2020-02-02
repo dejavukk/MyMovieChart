@@ -91,4 +91,17 @@ class TheaterListController: UITableViewController {
     }
     
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if (segue.identifier == "segue_map") {
+            
+            let path = self.tableView.indexPath(for: sender as! UITableViewCell)
+            
+            let data = self.list[path!.row]
+            
+            (segue.destination as? TheaterViewController)?.param = data
+            
+            
+        }
+    }
 }

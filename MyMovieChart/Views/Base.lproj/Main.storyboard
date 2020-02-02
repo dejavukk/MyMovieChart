@@ -139,7 +139,7 @@
                                     <outlet property="mPlexAdd" destination="EoW-hu-pSr" id="kdl-Ah-gJo"/>
                                     <outlet property="mPlexName" destination="ELx-GZ-Afs" id="bu7-Xp-3az"/>
                                     <outlet property="mPlexTel" destination="s2X-vq-qm7" id="xXq-eq-IxI"/>
-                                    <segue destination="rMP-kg-dOz" kind="show" id="D3G-SF-a1c"/>
+                                    <segue destination="rMP-kg-dOz" kind="show" identifier="segue_map" id="D3G-SF-a1c"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -154,7 +154,7 @@
             </objects>
             <point key="canvasLocation" x="2040.8" y="857.88177339901483"/>
         </scene>
-        <!--Theater View Controller-->
+        <!--Title-->
         <scene sceneID="0A8-Uy-7mV">
             <objects>
                 <viewController id="rMP-kg-dOz" customClass="TheaterViewController" customModule="MyMovieChart" customModuleProvider="target" sceneMemberID="viewController">
@@ -175,7 +175,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="f1Q-7e-tER"/>
                     </view>
-                    <navigationItem key="navigationItem" id="zXd-jh-OP9"/>
+                    <navigationItem key="navigationItem" title="Title" id="5gT-fu-pQj"/>
                     <connections>
                         <outlet property="map" destination="8cI-br-W3B" id="l5e-cM-rxI"/>
                     </connections>
