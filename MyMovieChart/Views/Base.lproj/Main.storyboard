@@ -138,9 +138,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="348" height="68"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="연락처" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2X-vq-qm7">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연락처" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2X-vq-qm7">
                                             <rect key="frame" x="235" y="5" width="109" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="97" id="Hhd-iH-768"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="TSF-zz-TTi"/>
+                                                <constraint firstAttribute="width" constant="109" id="jNF-uo-OJh"/>
+                                                <constraint firstAttribute="height" constant="21" id="vma-KH-5Vg"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -160,7 +165,15 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="s2X-vq-qm7" secondAttribute="trailing" constant="20" symbolic="YES" id="bVv-cH-qSe"/>
+                                        <constraint firstItem="s2X-vq-qm7" firstAttribute="top" secondItem="THk-he-4id" secondAttribute="top" constant="20" symbolic="YES" id="itb-7o-63e"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="s2X-vq-qm7" secondAttribute="trailing" constant="31" id="rOZ-bH-Mco"/>
+                                    <constraint firstItem="s2X-vq-qm7" firstAttribute="top" secondItem="jTf-kl-ZG2" secondAttribute="top" constant="5" id="xvp-VD-rdG"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="mPlexAdd" destination="EoW-hu-pSr" id="kdl-Ah-gJo"/>
                                     <outlet property="mPlexName" destination="ELx-GZ-Afs" id="bu7-Xp-3az"/>
@@ -243,19 +256,17 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Uwk-5z-whT">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Uwk-5z-whT">
                                 <rect key="frame" x="177" y="396" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Cy6-52-xbU" firstAttribute="leading" secondItem="CX4-j0-LMN" secondAttribute="leading" id="3VP-jQ-fsT"/>
-                            <constraint firstItem="CX4-j0-LMN" firstAttribute="trailing" secondItem="Uwk-5z-whT" secondAttribute="trailing" constant="178" id="9ua-ka-gvC"/>
-                            <constraint firstItem="Uwk-5z-whT" firstAttribute="centerY" secondItem="u60-SE-6Wn" secondAttribute="centerY" id="IQq-cf-gv6"/>
-                            <constraint firstItem="Uwk-5z-whT" firstAttribute="leading" secondItem="CX4-j0-LMN" secondAttribute="leading" constant="177" id="Qgc-QO-97q"/>
-                            <constraint firstItem="CX4-j0-LMN" firstAttribute="bottom" secondItem="Cy6-52-xbU" secondAttribute="bottom" id="SwH-T1-6XP"/>
-                            <constraint firstItem="Cy6-52-xbU" firstAttribute="top" secondItem="CX4-j0-LMN" secondAttribute="top" id="inM-JH-HmQ"/>
-                            <constraint firstItem="CX4-j0-LMN" firstAttribute="trailing" secondItem="Cy6-52-xbU" secondAttribute="trailing" id="qEL-XW-pPv"/>
+                            <constraint firstItem="Cy6-52-xbU" firstAttribute="top" secondItem="CX4-j0-LMN" secondAttribute="top" id="5BZ-Hb-Z5B"/>
+                            <constraint firstItem="Cy6-52-xbU" firstAttribute="trailing" secondItem="CX4-j0-LMN" secondAttribute="trailing" id="5sc-Es-Mup"/>
+                            <constraint firstItem="Cy6-52-xbU" firstAttribute="leading" secondItem="CX4-j0-LMN" secondAttribute="leading" id="Q08-et-Jly"/>
+                            <constraint firstItem="Cy6-52-xbU" firstAttribute="bottom" secondItem="CX4-j0-LMN" secondAttribute="bottom" id="VHG-2X-fed"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CX4-j0-LMN"/>
                     </view>
